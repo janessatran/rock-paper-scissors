@@ -47,22 +47,31 @@
     }
     const playerSelection = prompt("Pick: rock, paper, or scisccors. Type and enter your choice. ")
     const computerSelection = computerPlay()
-    console.log(playRound(playerSelection, computerSelection))
+    // console.log(playRound(playerSelection, computerSelection))
     
+    if (!String.prototype.includes) {
+        String.prototype.includes = function() {
+            'use strict';
+            return String.prototype.indexOf.apply(this, arguments) !== -1;
+        };
+    }
+
     function game() {
         var i = 0
         var playerPoints = 0
         var computerPoints = 0
         while (i < 5) {
-            var results = playRound(playerSelection, computerSelection)
-            if (results.includes("Win")) {
+            var gameResults = playRound(playerSelection, computerSelection)
+            var win = gameResults.includes("Win");
+            if (win) {
                 playerPoints += 1
             }
             else {
                 computerPoints += 1
             }
-            console.log("player points: " + playerPoints)
-            console.log("computer points: " + computerPoints)
+            console.log("ROUND " + i + ":")
+            console.log("PLAYER points: " + playerPoints)
+            console.log("COMPUTER points: " + computerPoints)
             i += 1
         }
         if (playerPoints > computerPoints) { 
