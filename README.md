@@ -1,2 +1,2 @@
-# tic-tac-toe
+# rock paper scissors
 JavaScript exercise
