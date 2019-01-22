@@ -45,8 +45,6 @@
             return 'You Lose! Rock beats Scissors!'
         }
     }
-    const playerSelection = prompt("Pick: rock, paper, or scisccors. Type and enter your choice. ")
-    const computerSelection = computerPlay()
     // console.log(playRound(playerSelection, computerSelection))
     
     if (!String.prototype.includes) {
@@ -61,6 +59,8 @@
         var playerPoints = 0
         var computerPoints = 0
         while (i < 5) {
+            const playerSelection = prompt("Pick: rock, paper, or scisccors. Type and enter your choice. ")
+            const computerSelection = computerPlay()
             var gameResults = playRound(playerSelection, computerSelection)
             var win = gameResults.includes("Win");
             if (win) {
