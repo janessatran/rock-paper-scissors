@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tic Tac Toe</title>
+</head>
+<body>
+    <script>
+    function computerPlay() {
+        var num = Math.floor(Math.random() * 3)
+        if (num == 0){ return 'Rock' }
+        else if (num == 1){ return 'Paper' }
+        else { return 'Scissors'} 
+    }
+
+    function playRound(playerSelection, computerSelection){
+        var pS = playerSelection.toLowerCase()
+        var cS = computerSelection.toLowerCase()
+        if (pS == 'rock' && cS == 'scissors') { 
+            return 'You Win! Rock beats Scissors!'
+        }
+        else if (pS == 'rock' && cS == 'paper') {
+            return 'You Lose! Paper beats Rock!'
+        }
+        else if (pS == 'rock' && cS == 'rock') {
+            return 'Tied! Rock and Rock!'
+        }
+        // paper
+        else if (pS == 'paper' && cS == 'scissors') { 
+            return 'You Lose! Scissors beats Paper!'
+        }
+        else if (pS == 'paper' && cS == 'paper') {
+            return 'Tie! Paper and Paper!'
+        }
+        else if (pS == 'paper' && cS == 'rock') {
+            return 'You Win! Paper beats Rock!'
+        }
+        // scissors
+        else if (pS == 'scissors' && cS == 'paper') { 
+            return 'You Win! Scissors beats Paper!'
+        }
+        else if (pS == 'scissors' && cS == 'scissors') {
+            return 'Tie! Scissors and Scissors!'
+        }
+        else if (pS == 'scissors' && cS == 'rock') {
+            return 'You Lose! Rock beats Scissors!'
+        }
+    }
+    const playerSelection = prompt("Pick: rock, paper, or scisccors. Type and enter your choice. ")
+    const computerSelection = computerPlay()
+    console.log(playRound(playerSelection, computerSelection))
+    
+    function game() {
+        var i = 0
+        var playerPoints = 0
+        var computerPoints = 0
+        while (i < 5) {
+            var results = playRound(playerSelection, computerSelection)
+            if (results.includes("Win")) {
+                playerPoints += 1
+            }
+            else {
+                computerPoints += 1
+            }
+            console.log("player points: " + playerPoints)
+            console.log("computer points: " + computerPoints)
+            i += 1
+        }
+        if (playerPoints > computerPoints) { 
+            return "Player wins!"
+        }
+        else {
+            return "Computer wins!"
+        }
+    }
+    console.log(game())
+    // print(game())
+    </script>
+</body>
+</html>
